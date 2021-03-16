@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_fleet_partner_geo_form" model="ir.ui.view">
+            <field name="name">fleet.geolocation.inherit</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='driver_id']" position="after">
+                    <field name="base_truck_company"/>
+                    <field name="registration"/>
+                </xpath>
+                <xpath expr="//group[last()]" position="inside">
+                        <group colspan="2" col="2">
+                            <separator string="Geolocation" colspan="2"/>
+                             <button
+                                string="Geolocate"
+                                name="geo_localize"
+                                colspan="2"
+                                icon="fa-check"
+                                type="object"/> 
+                            <div>
+                                <span class="oe_inline"> ( On  </span>
+                                <field name="date_localization" nolabel="1" class="oe_inline"/>
+                                <span> : Lat : </span>
+                                <field name="driver_latitude" nolabel="1" class="oe_inline"/>
+                                <span> ;  Long:  </span>
+                                <field name="driver_longitude" nolabel="1" class="oe_inline"/>
+                                <span>) </span>
+                            </div>
+                        </group>
+                </xpath>
+            </field>
+        </record>
+</odoo>
